@@ -1,1 +1,5 @@
-href="downloads/supervideo-6.1.2-setup.exe"
+supervideo/
+├─ index.html
+├─ assets/
+│  └─ logo.png
+└─ README.md
