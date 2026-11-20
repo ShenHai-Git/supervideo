@@ -119,20 +119,6 @@
   .card h3{font-size:18px;font-weight:700;margin-bottom:10px}
   .card p{font-size:14.5px;color:var(--text-sub)}
 
-  /* ===== 下载区 ===== */
-  .download{padding:20px 0 80px}
-  .download-box{
-    background:var(--card);border:1px solid var(--border);border-radius:24px;padding:48px 40px;
-    display:grid;grid-template-columns:auto 1fr;gap:36px;align-items:center;
-  }
-  .download-box .dl-logo{width:120px;height:120px;border-radius:26px;object-fit:contain}
-  .dl-info h2{font-size:28px;font-weight:800;margin-bottom:8px}
-  .dl-info .ver{color:var(--text-mute);font-size:14px;margin-bottom:18px}
-  .dl-specs{display:flex;gap:22px;flex-wrap:wrap;margin-bottom:26px;color:var(--text-sub);font-size:14px}
-  .dl-specs b{color:var(--text)}
-  .dl-actions{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
-  .dl-note{font-size:13px;color:var(--text-mute)}
-
   /* ===== 页脚 ===== */
   footer{border-top:1px solid var(--border);padding:32px 0}
   .foot{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;color:var(--text-mute);font-size:14px}
@@ -146,9 +132,6 @@
     .hero-art img{width:180px;height:180px}
     .hero h1{font-size:36px}
     .feature-grid{grid-template-columns:repeat(2,1fr)}
-    .download-box{grid-template-columns:1fr;text-align:center}
-    .download-box .dl-logo{margin:0 auto}
-    .dl-specs,.dl-actions{justify-content:center}
     .nav-links{display:none}
   }
   @media (max-width:600px){
@@ -171,7 +154,6 @@
     <nav class="nav-links">
       <a href="#home" class="active">首页</a>
       <a href="#features">功能介绍</a>
-      <a href="#download">下载</a>
       <a href="#faq">常见问题</a>
     </nav>
     <div class="nav-extra">
@@ -188,7 +170,7 @@
       <h1>超级视频</h1>
       <p class="sub">轻巧流畅的桌面观影应用，启动快、占用低，打开就能安心看片。</p>
       <div class="hero-btns">
-        <a class="btn btn-primary" href="#download">立即下载 Windows 版</a>
+        <a class="btn btn-primary" href="https://github.com/ShenHai-Git/supervideo/releases/download/v6.1.2/-6.1.2-setup.exe" download="超级视频-6.1.2-setup.exe">立即下载 Windows 版</a>
         <a class="btn btn-ghost" href="#features">查看功能</a>
       </div>
       <div class="hero-meta">
@@ -245,35 +227,12 @@
   </div>
 </section>
 
-<!-- ===== 下载 ===== -->
-<section class="download" id="download">
-  <div class="container">
-    <div class="download-box">
-      <img class="dl-logo" src="logo.png" alt="超级视频">
-      <div class="dl-info">
-        <h2>超级视频 Windows 版</h2>
-        <div class="ver">版本 v6.1.2 · 更新于 2026-11-19</div>
-        <div class="dl-specs">
-          <span>格式：<b>exe 安装程序</b></span>
-          <span>大小：<b>229.5 MB</b></span>
-          <span>系统：<b>Windows 10 / 11（64 位）</b></span>
-        </div>
-        <div class="dl-actions">
-          <a class="btn btn-primary" href="https://github.com/ShenHai-Git/supervideo/releases/download/v6.1.2/-6.1.2-setup.exe" download="超级视频-6.1.2-setup.exe">⬇ 下载安装包</a>
-          <span class="dl-note">下载后双击 exe，按提示完成安装即可</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- ===== 页脚 ===== -->
 <footer id="faq">
   <div class="container foot">
     <div>© 2026 超级视频 · 保留所有权利</div>
     <div class="links">
       <a href="#features">功能介绍</a>
-      <a href="#download">下载</a>
       <a href="#faq">常见问题</a>
     </div>
   </div>
