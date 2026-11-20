@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>超级视频 - 官方下载</title>
+<link rel="stylesheet" href="https://miaoda.feishu.cn/fonts/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap">
+<style>
+  :root{
+    --bg:#ffffff;
+    --bg-soft:#f6f7f9;
+    --card:#f6f7f9;
+    --card-hover:#eef0f4;
+    --text:#1f2328;
+    --text-sub:#57606a;
+    --text-mute:#8b949e;
+    --border:#eaecef;
+    --primary:#f4622a;
+    --primary-hover:#e2531c;
+    --grad-a:#ff9a3d;
+    --grad-b:#f43f5e;
+    --chip:#f0f1f5;
+    --hero-bg:#14101d;
+    --shadow:0 1px 2px rgba(16,24,40,.06);
+  }
+  html[data-theme="dark"]{
+    --bg:#0d1117;
+    --bg-soft:#161b22;
+    --card:#1c2128;
+    --card-hover:#232a33;
+    --text:#e6edf3;
+    --text-sub:#9da7b3;
+    --text-mute:#7d8590;
+    --border:#21262d;
+    --primary:#ff7a3d;
+    --primary-hover:#ff8f57;
+    --chip:#232a33;
+    --hero-bg:#0a0810;
+    --shadow:0 1px 2px rgba(0,0,0,.4);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:"Noto Sans SC",-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;
+    background:var(--bg);color:var(--text);line-height:1.6;
+    transition:background .25s ease,color .25s ease;
+  }
+  a{color:inherit;text-decoration:none}
+  .container{max-width:1200px;margin:0 auto;padding:0 32px}
+
+  /* ===== 顶部导航 ===== */
+  header{
+    position:sticky;top:0;z-index:50;background:var(--bg);
+    border-bottom:1px solid var(--border);transition:background .25s ease;
+  }
+  .nav{display:flex;align-items:center;gap:28px;height:64px}
+  .brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:19px}
+  .brand img{width:30px;height:30px;border-radius:8px}
+  .nav-links{display:flex;align-items:center;gap:26px;margin-left:auto;font-size:15px}
+  .nav-links a{color:var(--text-sub);transition:color .15s}
+  .nav-links a:hover{color:var(--text)}
+  .nav-links a.active{color:var(--primary);font-weight:500}
+  .nav-extra{display:flex;align-items:center;gap:18px}
+  .theme-toggle{
+    width:46px;height:26px;border-radius:13px;background:var(--chip);
+    border:1px solid var(--border);position:relative;cursor:pointer;transition:background .2s;flex:none;
+  }
+  .theme-toggle .knob{
+    position:absolute;top:2px;left:2px;width:20px;height:20px;border-radius:50%;
+    background:#fff;box-shadow:var(--shadow);display:flex;align-items:center;justify-content:center;
+    transition:transform .2s ease;color:#f5b301;font-size:12px;
+  }
+  html[data-theme="dark"] .theme-toggle .knob{transform:translateX(20px)}
+
+  /* ===== Hero ===== */
+  .hero{background:var(--hero-bg);color:#fff;overflow:hidden}
+  .hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:40px;align-items:center;padding:80px 0}
+  .badge{
+    display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.1);
+    border:1px solid rgba(255,255,255,.15);border-radius:999px;padding:6px 14px;
+    font-size:13px;color:#ffd9c7;margin-bottom:22px;
+  }
+  .hero h1{
+    font-size:54px;font-weight:900;letter-spacing:-1px;line-height:1.15;margin-bottom:20px;
+    background:linear-gradient(92deg,var(--grad-a),var(--grad-b));
+    -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+  }
+  .hero p.sub{font-size:20px;color:rgba(255,255,255,.78);max-width:520px;margin-bottom:34px}
+  .hero-btns{display:flex;gap:16px;flex-wrap:wrap}
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;border-radius:999px;padding:13px 28px;
+    font-size:15px;font-weight:600;cursor:pointer;border:1px solid transparent;transition:all .15s;
+  }
+  .btn-primary{background:linear-gradient(92deg,var(--grad-a),var(--grad-b));color:#fff}
+  .btn-primary:hover{filter:brightness(1.08);transform:translateY(-1px)}
+  .btn-ghost{background:rgba(255,255,255,.1);color:#fff;border-color:rgba(255,255,255,.2)}
+  .btn-ghost:hover{background:rgba(255,255,255,.18)}
+  .hero-art{display:flex;justify-content:center}
+  .hero-art img{width:280px;height:280px;object-fit:contain;border-radius:32px;filter:drop-shadow(0 24px 40px rgba(244,63,94,.3))}
+  .hero-meta{display:flex;gap:28px;margin-top:36px;flex-wrap:wrap}
+  .hero-meta .m{font-size:13px;color:rgba(255,255,255,.6)}
+  .hero-meta .m b{display:block;font-size:20px;color:#fff;font-weight:700}
+
+  /* ===== 功能卡片 ===== */
+  .features{padding:64px 0}
+  .section-title{text-align:center;margin-bottom:44px}
+  .section-title h2{font-size:32px;font-weight:800;margin-bottom:10px}
+  .section-title p{color:var(--text-sub)}
+  .feature-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+  .card{
+    background:var(--card);border:1px solid var(--border);border-radius:18px;padding:28px;
+    transition:background .2s ease,transform .15s ease;
+  }
+  .card:hover{background:var(--card-hover);transform:translateY(-3px)}
+  .card .icon{
+    width:46px;height:46px;border-radius:12px;background:var(--chip);display:flex;
+    align-items:center;justify-content:center;font-size:23px;margin-bottom:18px;
+  }
+  .card h3{font-size:18px;font-weight:700;margin-bottom:10px}
+  .card p{font-size:14.5px;color:var(--text-sub)}
+
+  /* ===== 下载区 ===== */
+  .download{padding:20px 0 80px}
+  .download-box{
+    background:var(--card);border:1px solid var(--border);border-radius:24px;padding:48px 40px;
+    display:grid;grid-template-columns:auto 1fr;gap:36px;align-items:center;
+  }
+  .download-box .dl-logo{width:120px;height:120px;border-radius:26px;object-fit:contain}
+  .dl-info h2{font-size:28px;font-weight:800;margin-bottom:8px}
+  .dl-info .ver{color:var(--text-mute);font-size:14px;margin-bottom:18px}
+  .dl-specs{display:flex;gap:22px;flex-wrap:wrap;margin-bottom:26px;color:var(--text-sub);font-size:14px}
+  .dl-specs b{color:var(--text)}
+  .dl-actions{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+  .dl-note{font-size:13px;color:var(--text-mute)}
+
+  /* ===== 页脚 ===== */
+  footer{border-top:1px solid var(--border);padding:32px 0}
+  .foot{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;color:var(--text-mute);font-size:14px}
+  .foot .links{display:flex;gap:22px}
+  .foot a:hover{color:var(--text)}
+
+  /* ===== 响应式 ===== */
+  @media (max-width:960px){
+    .hero-grid{grid-template-columns:1fr;padding:52px 0}
+    .hero-art{order:-1}
+    .hero-art img{width:180px;height:180px}
+    .hero h1{font-size:36px}
+    .feature-grid{grid-template-columns:repeat(2,1fr)}
+    .download-box{grid-template-columns:1fr;text-align:center}
+    .download-box .dl-logo{margin:0 auto}
+    .dl-specs,.dl-actions{justify-content:center}
+    .nav-links{display:none}
+  }
+  @media (max-width:600px){
+    .container{padding:0 20px}
+    .feature-grid{grid-template-columns:1fr}
+    .hero h1{font-size:29px}
+    .hero p.sub{font-size:16px}
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== 顶部导航 ===== -->
+<header>
+  <div class="container nav">
+    <a class="brand" href="#home">
+      <img src="assets/logo.png" alt="超级视频">
+      <span>超级视频</span>
+    </a>
+    <nav class="nav-links">
+      <a href="#home" class="active">首页</a>
+      <a href="#features">功能介绍</a>
+      <a href="#download">下载</a>
+      <a href="#faq">常见问题</a>
+    </nav>
+    <div class="nav-extra">
+      <button class="theme-toggle" id="themeToggle" aria-label="切换主题"><span class="knob" id="knob">🌙</span></button>
+    </div>
+  </div>
+</header>
+
+<!-- ===== Hero ===== -->
+<section class="hero" id="home">
+  <div class="container hero-grid">
+    <div>
+      <div class="badge">🎬 官方桌面客户端 · Windows 版</div>
+      <h1>超级视频</h1>
+      <p class="sub">轻巧流畅的桌面观影应用，启动快、占用低，打开就能安心看片。</p>
+      <div class="hero-btns">
+        <a class="btn btn-primary" href="#download">立即下载 Windows 版</a>
+        <a class="btn btn-ghost" href="#features">查看功能</a>
+      </div>
+      <div class="hero-meta">
+        <div class="m"><b>v6.1.2</b>当前版本</div>
+        <div class="m"><b>229.5 MB</b>安装包大小</div>
+        <div class="m"><b>Win 10/11</b>支持系统</div>
+      </div>
+    </div>
+    <div class="hero-art">
+      <img src="assets/logo.png" alt="超级视频图标">
+    </div>
+  </div>
+</section>
+
+<!-- ===== 功能 ===== -->
+<section class="features" id="features">
+  <div class="container">
+    <div class="section-title">
+      <h2>为什么选择超级视频</h2>
+      <p>为桌面观影场景打造，简单、轻快、好用</p>
+    </div>
+    <div class="feature-grid">
+      <div class="card">
+        <div class="icon">▶️</div>
+        <h3>流畅播放</h3>
+        <p>基于原生内核运行，启动迅速、播放流畅，长时间观看也不易卡顿。</p>
+      </div>
+      <div class="card">
+        <div class="icon">🎞️</div>
+        <h3>高清画质</h3>
+        <p>适配高清视频画面，色彩清晰自然，带来舒适的观影体验。</p>
+      </div>
+      <div class="card">
+        <div class="icon">🪶</div>
+        <h3>轻巧占用</h3>
+        <p>安装与后台占用精简，配置一般的电脑也能轻松流畅运行。</p>
+      </div>
+      <div class="card">
+        <div class="icon">🪟</div>
+        <h3>灵活窗口</h3>
+        <p>支持窗口缩放、全屏与置顶观看，窗口大小随心调整。</p>
+      </div>
+      <div class="card">
+        <div class="icon">📂</div>
+        <h3>多格式兼容</h3>
+        <p>兼容常见视频与网页媒体格式，下载安装后打开即用。</p>
+      </div>
+      <div class="card">
+        <div class="icon">🔄</div>
+        <h3>持续更新</h3>
+        <p>版本持续迭代优化，后续功能与体验会不断完善。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 下载 ===== -->
+<section class="download" id="download">
+  <div class="container">
+    <div class="download-box">
+      <img class="dl-logo" src="assets/logo.png" alt="超级视频">
+      <div class="dl-info">
+        <h2>超级视频 Windows 版</h2>
+        <div class="ver">版本 v6.1.2 · 更新于 2026-11-19</div>
+        <div class="dl-specs">
+          <span>格式：<b>exe 安装程序</b></span>
+          <span>大小：<b>229.5 MB</b></span>
+          <span>系统：<b>Windows 10 / 11（64 位）</b></span>
+        </div>
+        <div class="dl-actions">
+          <a class="btn btn-primary" href="https://github.com/ShenHai-Git/supervideo/releases/download/v6.1.2/-6.1.2-setup.exe" download="超级视频-6.1.2-setup.exe">⬇ 下载安装包</a>
+          <span class="dl-note">下载后双击 exe，按提示完成安装即可</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 页脚 ===== -->
+<footer id="faq">
+  <div class="container foot">
+    <div>© 2026 超级视频 · 保留所有权利</div>
+    <div class="links">
+      <a href="#features">功能介绍</a>
+      <a href="#download">下载</a>
+      <a href="#faq">常见问题</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // 主题切换（记忆偏好）
+  const root = document.documentElement;
+  const toggle = document.getElementById('themeToggle');
+  const knob = document.getElementById('knob');
+  function applyTheme(t){
+    root.setAttribute('data-theme', t);
+    knob.textContent = t === 'dark' ? '☀️' : '🌙';
+    try{ localStorage.setItem('supervideo-theme', t); }catch(e){}
+  }
+  let saved = 'light';
+  try{ saved = localStorage.getItem('supervideo-theme') || 'light'; }catch(e){}
+  applyTheme(saved);
+  toggle.addEventListener('click', () => {
+    applyTheme(root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+  });
+
+  // 导航高亮随滚动切换
+  const links = document.querySelectorAll('.nav-links a');
+  const sections = [...links].map(a => document.querySelector(a.getAttribute('href')));
+  window.addEventListener('scroll', () => {
+    let idx = 0;
+    sections.forEach((s, i) => { if(s && s.getBoundingClientRect().top <= 120) idx = i; });
+    links.forEach((a, i) => a.classList.toggle('active', i === idx));
+  });
+</script>
+</body>
+</html>
